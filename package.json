@@ -15,7 +15,8 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "migrate": "node --env-file-if-exists=.env --import tsx scripts/migrate.ts"
+    "migrate": "node --env-file-if-exists=.env --import tsx scripts/migrate.ts",
+    "connectivity": "node --env-file-if-exists=.env --import tsx scripts/connectivity.ts"
   },
   "dependencies": {
     "fastify": "5.12.8",
