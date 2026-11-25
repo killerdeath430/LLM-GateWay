@@ -4,7 +4,12 @@ dist/
 coverage/
 *.tsbuildinfo
 
-# Secrets: provider keys live only in env vars (decision D8). Only the example is committed.
+# Personal working notes: private to the author, never committed or pushed.
+/docs/
+/CLAUDE.md
+/BRIEF.md
+
+# Secrets: provider keys live only in env vars. Only the example is committed.
 .env
 .env.*
 !.env.example
@@ -22,4 +27,4 @@ Thumbs.db
 # Local Docker volumes (Unit 0.2)
 .pgdata/
 
-# results/*.jsonl ARE committed on purpose: every reported number must trace to them (rule 16).
+# results/*.jsonl ARE committed on purpose: every number in the README must trace to them.

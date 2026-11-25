@@ -2,7 +2,7 @@
 
 An OpenAI-compatible LLM gateway in front of Gemini, Groq and Ollama, with model-alias routing, client API keys, streaming, and per-request logging of tokens, latency and cost.
 
-> **Status: Phase 0, Unit 0.2.** `GET /health` and the Postgres schema exist so far. See `docs/handover.md`.
+> **Status: Phase 0, Unit 0.2.** `GET /health` and the Postgres schema exist so far.
 
 ## Status
 
@@ -34,7 +34,7 @@ npm run dev             # http://127.0.0.1:8080/health
 
 ## Results
 
-Latency numbers will appear in `docs/baseline.md`, each traceable to a file in `results/`. Currently: TODO(measure).
+The direct vs gateway latency table (p50/p95 TTFB and total latency) will go here. Each number will list the command that produced it and link to its raw file in `results/`. Currently: TODO(measure).
 
 ## Limitations
 
@@ -43,7 +43,3 @@ Latency numbers will appear in `docs/baseline.md`, each traceable to a file in `
 - Ollama latency depends on local hardware and is not comparable to the hosted providers.
 - Free-tier rate limits may affect the measurements.
 - No reliability features yet: retries, failover, rate limiting and caching are Phase 2+ work.
-
-## Docs
-
-`docs/decisions.md` (why), `docs/architecture.md` (what), `docs/flow.md` (call paths), `docs/constraints.md` (rules), `docs/test-checklist.md` (how each unit is verified).

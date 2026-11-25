@@ -5,7 +5,7 @@ name: llm-gateway
 
 services:
   postgres:
-    # Tag pinned to the exact patch version; see docs/decisions.md D14.
+    # Pinned to the exact patch version so every run uses the same Postgres.
     image: postgres:17.12-alpine
     environment:
       POSTGRES_USER: gateway
