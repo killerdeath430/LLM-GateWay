@@ -2,23 +2,25 @@
 
 An OpenAI-compatible LLM gateway in front of Gemini, Groq and Ollama, with model-alias routing, client API keys, streaming, and per-request logging of tokens, latency and cost.
 
-> **Status: Phase 0, Unit 0.1 (repo skeleton).** Only `GET /health` exists so far. See `docs/handover.md`.
+> **Status: Phase 0, Unit 0.2.** `GET /health` and the Postgres schema exist so far. See `docs/handover.md`.
 
 ## Status
 
 | Phase | Scope                                                                                                    | State                               |
 | ----- | -------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| 0     | Setup, Postgres, connectivity, direct latency baseline                                                   | In progress (0.1 done)              |
+| 0     | Setup, Postgres, connectivity, direct latency baseline                                                   | In progress (0.1, 0.2 done)         |
 | 1     | `/v1/chat/completions` (stream and non-stream), aliases, client keys, logging and cost, gateway overhead | Not started                         |
 | 2+    | Retries, failover, rate limiting, caching, evals, dashboards, deployment                                 | Future work, not in this engagement |
 
 ## Quick start
 
-Requires Node 24+ and npm.
+Requires Node 24+, npm, and Docker.
 
 ```bash
 npm ci
 cp .env.example .env    # fill in provider keys (never commit .env)
+docker compose up -d    # Postgres on 127.0.0.1:5433
+npm run migrate         # creates api_keys and request_logs; safe to re-run
 npm run dev             # http://127.0.0.1:8080/health
 ```
 
@@ -28,6 +30,7 @@ npm run dev             # http://127.0.0.1:8080/health
 | `npm run typecheck` | Type-check src, tests and scripts   |
 | `npm run lint`      | ESLint plus a Prettier check        |
 | `npm test`          | Vitest (never calls real providers) |
+| `npm run migrate`   | Apply pending SQL migrations        |
 
 ## Results
 

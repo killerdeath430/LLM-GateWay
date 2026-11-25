@@ -1,0 +1,32 @@
+# Local infrastructure for the gateway.
+# `docker compose up -d` starts Postgres only. Redis is reserved for Phase 2 (caching and
+# rate limiting) and sits behind the `phase2` profile, so it never starts by accident.
+name: llm-gateway
+
+services:
+  postgres:
+    # Tag pinned to the exact patch version; see docs/decisions.md D14.
+    image: postgres:17.12-alpine
+    environment:
+      POSTGRES_USER: gateway
+      POSTGRES_PASSWORD: gateway # local-only dev credential; port is bound to 127.0.0.1
+      POSTGRES_DB: gateway
+    ports:
+      # Host port 5433, not 5432: another local project's Postgres already owns 5432 (D14).
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gateway -d gateway"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+
+  redis:
+    profiles: ["phase2"]
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+
+volumes:
+  pgdata:
