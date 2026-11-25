@@ -1,0 +1,25 @@
+# Dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Secrets: provider keys live only in env vars (decision D8). Only the example is committed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and OS/editor noise
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local Docker volumes (Unit 0.2)
+.pgdata/
+
+# results/*.jsonl ARE committed on purpose: every reported number must trace to them (rule 16).

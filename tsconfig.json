@@ -1,0 +1,25 @@
+{
+  // Base config: used by the editor, `npm run typecheck`, and ESLint.
+  // Covers src, tests and scripts. The build uses tsconfig.build.json (src only).
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2023"],
+    "types": ["node"],
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true,
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "rootDir": ".",
+    "outDir": "dist"
+  },
+  "include": ["src", "tests", "scripts", "vitest.config.ts", "eslint.config.js"]
+}

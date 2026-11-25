@@ -1,0 +1,33 @@
+{
+  "name": "llm-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenAI-compatible LLM gateway in front of Gemini, Groq and Ollama",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "fastify": "5.12.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.2",
+    "eslint": "10.15.0",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.10.1",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.74.0",
+    "vitest": "5.1.1"
+  }
+}
