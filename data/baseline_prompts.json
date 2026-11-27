@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "frozen": "2026-11-28",
+  "description": "Frozen baseline prompt set for direct vs gateway latency. Do not edit: create baseline_prompts_v2.json instead.",
+  "temperature": 0,
+  "prompts": [
+    {
+      "id": "s01",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "What does HTTP status code 429 mean? Answer in one sentence."
+        }
+      ]
+    },
+    {
+      "id": "s02",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Name three common causes of high latency in web APIs. Reply with a comma-separated list."
+        }
+      ]
+    },
+    {
+      "id": "s03",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "In one sentence, what is the difference between a process and a thread?"
+        }
+      ]
+    },
+    {
+      "id": "s04",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Convert 3.5 hours into minutes. Reply with just the number."
+        }
+      ]
+    },
+    {
+      "id": "s05",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Give a one-sentence definition of idempotency in REST APIs."
+        }
+      ]
+    },
+    {
+      "id": "s06",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the time complexity of binary search? Answer briefly."
+        }
+      ]
+    },
+    {
+      "id": "s07",
+      "category": "short",
+      "max_tokens": 256,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write a single-line SQL query that counts the rows in a table named orders."
+        }
+      ]
+    },
+    {
+      "id": "m01",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Explain how a hash map handles collisions. Use one short paragraph."
+        }
+      ]
+    },
+    {
+      "id": "m02",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Describe the trade-offs between SQL and NoSQL databases for a small startup, in about 100 words."
+        }
+      ]
+    },
+    {
+      "id": "m03",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write a TypeScript function that checks whether a string is a palindrome, ignoring case and spaces. Include a one-line comment."
+        }
+      ]
+    },
+    {
+      "id": "m04",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Explain what a p95 latency metric tells you that an average does not. Keep it under 120 words."
+        }
+      ]
+    },
+    {
+      "id": "m05",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "List five practical tips for writing clear commit messages, one line each."
+        }
+      ]
+    },
+    {
+      "id": "m06",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Explain the difference between TCP and UDP, and give one use case for each, in a short paragraph."
+        }
+      ]
+    },
+    {
+      "id": "m07",
+      "category": "medium",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Describe how exponential backoff works when retrying failed network requests, in about 100 words."
+        }
+      ]
+    },
+    {
+      "id": "l01",
+      "category": "long",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Read the incident report below and summarize it in exactly three bullet points.\n\nIncident summary: On a Tuesday morning, the package-tracking API at Harbor Lane Logistics began returning errors to the mobile app and to partner integrations. For about forty minutes, roughly one in three tracking lookups failed with a timeout, and customers who did get a response often saw a delivery status that was several hours out of date. Support received a large spike in tickets, and two retail partners paused their automated status emails until the service recovered.\n\nTimeline: At 08:05 a scheduled job started rebuilding the search index for shipment events. The job had run every night for months without trouble, but a configuration change the previous week had moved it from 02:00 to 08:00 so that it would finish before a new reporting dashboard was refreshed. Nobody connected the new start time with the morning traffic peak. At 08:12 database CPU on the primary reached its limit. At 08:15 the API's connection pool was exhausted, and requests began queueing behind slow index-rebuild queries. The on-call engineer was paged at 08:19 by a latency alert, but the first dashboard she opened showed healthy API servers, so she spent ten minutes investigating the load balancer. At 08:31 a second engineer noticed the rebuild job in the database's list of active queries. The job was cancelled at 08:38, and error rates returned to normal by 08:45. The stale statuses persisted a little longer because a cache in front of the API held old responses for up to fifteen minutes.\n\nRoot cause and contributing factors: The direct cause was the index rebuild competing with production traffic for the same database primary. Contributing factors included the schedule change being reviewed only by the reporting team, the lack of a resource limit on the rebuild job, an API dashboard that showed server health but not database saturation, and a cache configured to serve stale data during errors without telling clients the data might be old.\n\nWhat went well: The latency alert fired within minutes, the team posted status updates to partners every fifteen minutes, and cancelling the job was quick and safe once the cause was found."
+        }
+      ]
+    },
+    {
+      "id": "l02",
+      "category": "long",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Read the incident report below. State the root cause in one sentence, then list the contributing factors.\n\nIncident summary: On a Tuesday morning, the package-tracking API at Harbor Lane Logistics began returning errors to the mobile app and to partner integrations. For about forty minutes, roughly one in three tracking lookups failed with a timeout, and customers who did get a response often saw a delivery status that was several hours out of date. Support received a large spike in tickets, and two retail partners paused their automated status emails until the service recovered.\n\nTimeline: At 08:05 a scheduled job started rebuilding the search index for shipment events. The job had run every night for months without trouble, but a configuration change the previous week had moved it from 02:00 to 08:00 so that it would finish before a new reporting dashboard was refreshed. Nobody connected the new start time with the morning traffic peak. At 08:12 database CPU on the primary reached its limit. At 08:15 the API's connection pool was exhausted, and requests began queueing behind slow index-rebuild queries. The on-call engineer was paged at 08:19 by a latency alert, but the first dashboard she opened showed healthy API servers, so she spent ten minutes investigating the load balancer. At 08:31 a second engineer noticed the rebuild job in the database's list of active queries. The job was cancelled at 08:38, and error rates returned to normal by 08:45. The stale statuses persisted a little longer because a cache in front of the API held old responses for up to fifteen minutes.\n\nRoot cause and contributing factors: The direct cause was the index rebuild competing with production traffic for the same database primary. Contributing factors included the schedule change being reviewed only by the reporting team, the lack of a resource limit on the rebuild job, an API dashboard that showed server health but not database saturation, and a cache configured to serve stale data during errors without telling clients the data might be old.\n\nWhat went well: The latency alert fired within minutes, the team posted status updates to partners every fifteen minutes, and cancelling the job was quick and safe once the cause was found."
+        }
+      ]
+    },
+    {
+      "id": "l03",
+      "category": "long",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Read the incident report below and propose three concrete action items to prevent a repeat, one sentence each.\n\nIncident summary: On a Tuesday morning, the package-tracking API at Harbor Lane Logistics began returning errors to the mobile app and to partner integrations. For about forty minutes, roughly one in three tracking lookups failed with a timeout, and customers who did get a response often saw a delivery status that was several hours out of date. Support received a large spike in tickets, and two retail partners paused their automated status emails until the service recovered.\n\nTimeline: At 08:05 a scheduled job started rebuilding the search index for shipment events. The job had run every night for months without trouble, but a configuration change the previous week had moved it from 02:00 to 08:00 so that it would finish before a new reporting dashboard was refreshed. Nobody connected the new start time with the morning traffic peak. At 08:12 database CPU on the primary reached its limit. At 08:15 the API's connection pool was exhausted, and requests began queueing behind slow index-rebuild queries. The on-call engineer was paged at 08:19 by a latency alert, but the first dashboard she opened showed healthy API servers, so she spent ten minutes investigating the load balancer. At 08:31 a second engineer noticed the rebuild job in the database's list of active queries. The job was cancelled at 08:38, and error rates returned to normal by 08:45. The stale statuses persisted a little longer because a cache in front of the API held old responses for up to fifteen minutes.\n\nRoot cause and contributing factors: The direct cause was the index rebuild competing with production traffic for the same database primary. Contributing factors included the schedule change being reviewed only by the reporting team, the lack of a resource limit on the rebuild job, an API dashboard that showed server health but not database saturation, and a cache configured to serve stale data during errors without telling clients the data might be old.\n\nWhat went well: The latency alert fired within minutes, the team posted status updates to partners every fifteen minutes, and cancelling the job was quick and safe once the cause was found."
+        }
+      ]
+    },
+    {
+      "id": "l04",
+      "category": "long",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "Summarize the design note below in under 80 words.\n\nDesign note: read-through cache for the product catalog service\n\nBackground: The catalog service answers product lookups for the web shop, the mobile app and the pricing engine. Each lookup joins five tables and slows down noticeably during sales events, when traffic can grow several times over within an hour. The database team has asked us to reduce read load before the next seasonal sale rather than adding another replica.\n\nProposal: We will add a read-through cache in front of the catalog database. On a lookup, the service first checks the cache by product ID. On a hit it returns the cached record; on a miss it queries the database, stores the result with a time-to-live of ten minutes, and returns it. Writes from the merchandising tool will delete the affected cache entries immediately after the database transaction commits, so most edits should be visible within seconds rather than waiting for the time-to-live to expire.\n\nPrices are the exception. The pricing engine already applies its own discounts, and showing a customer an old base price at checkout could cause a refund or a complaint. For that reason, price fields will be stored in the cache but the checkout path will always read prices directly from the database.\n\nRisks: First, a cache stampede: when a popular product's entry expires, hundreds of requests may miss at the same moment and hit the database together. We plan to add a small random jitter to each time-to-live and allow only one request per key to refill the cache while others wait briefly. Second, invalidation can fail if the merchandising tool crashes between committing a change and deleting the cache entry, leaving stale data for up to ten minutes. Third, the cache becomes a new dependency: if it is unavailable, the service must fall back to the database without timing out, which could briefly bring back the very load we are trying to remove. Finally, memory sizing is uncertain because we have not measured how many distinct products are viewed per hour during a sale.\n\nRollout: We will enable the cache for ten percent of traffic, compare error rates and database load for one week, and then expand gradually. A feature flag will allow us to turn the cache off within a minute.\n\nOpen questions: Should the time-to-live differ for products that change often? Who owns the cache cluster's on-call rotation?"
+        }
+      ]
+    },
+    {
+      "id": "l05",
+      "category": "long",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "List every risk mentioned in the design note below, with its proposed mitigation if one is given.\n\nDesign note: read-through cache for the product catalog service\n\nBackground: The catalog service answers product lookups for the web shop, the mobile app and the pricing engine. Each lookup joins five tables and slows down noticeably during sales events, when traffic can grow several times over within an hour. The database team has asked us to reduce read load before the next seasonal sale rather than adding another replica.\n\nProposal: We will add a read-through cache in front of the catalog database. On a lookup, the service first checks the cache by product ID. On a hit it returns the cached record; on a miss it queries the database, stores the result with a time-to-live of ten minutes, and returns it. Writes from the merchandising tool will delete the affected cache entries immediately after the database transaction commits, so most edits should be visible within seconds rather than waiting for the time-to-live to expire.\n\nPrices are the exception. The pricing engine already applies its own discounts, and showing a customer an old base price at checkout could cause a refund or a complaint. For that reason, price fields will be stored in the cache but the checkout path will always read prices directly from the database.\n\nRisks: First, a cache stampede: when a popular product's entry expires, hundreds of requests may miss at the same moment and hit the database together. We plan to add a small random jitter to each time-to-live and allow only one request per key to refill the cache while others wait briefly. Second, invalidation can fail if the merchandising tool crashes between committing a change and deleting the cache entry, leaving stale data for up to ten minutes. Third, the cache becomes a new dependency: if it is unavailable, the service must fall back to the database without timing out, which could briefly bring back the very load we are trying to remove. Finally, memory sizing is uncertain because we have not measured how many distinct products are viewed per hour during a sale.\n\nRollout: We will enable the cache for ten percent of traffic, compare error rates and database load for one week, and then expand gradually. A feature flag will allow us to turn the cache off within a minute.\n\nOpen questions: Should the time-to-live differ for products that change often? Who owns the cache cluster's on-call rotation?"
+        }
+      ]
+    },
+    {
+      "id": "l06",
+      "category": "long",
+      "max_tokens": 512,
+      "messages": [
+        {
+          "role": "user",
+          "content": "You are reviewing the design note below. Write three questions you would ask the author before approving it.\n\nDesign note: read-through cache for the product catalog service\n\nBackground: The catalog service answers product lookups for the web shop, the mobile app and the pricing engine. Each lookup joins five tables and slows down noticeably during sales events, when traffic can grow several times over within an hour. The database team has asked us to reduce read load before the next seasonal sale rather than adding another replica.\n\nProposal: We will add a read-through cache in front of the catalog database. On a lookup, the service first checks the cache by product ID. On a hit it returns the cached record; on a miss it queries the database, stores the result with a time-to-live of ten minutes, and returns it. Writes from the merchandising tool will delete the affected cache entries immediately after the database transaction commits, so most edits should be visible within seconds rather than waiting for the time-to-live to expire.\n\nPrices are the exception. The pricing engine already applies its own discounts, and showing a customer an old base price at checkout could cause a refund or a complaint. For that reason, price fields will be stored in the cache but the checkout path will always read prices directly from the database.\n\nRisks: First, a cache stampede: when a popular product's entry expires, hundreds of requests may miss at the same moment and hit the database together. We plan to add a small random jitter to each time-to-live and allow only one request per key to refill the cache while others wait briefly. Second, invalidation can fail if the merchandising tool crashes between committing a change and deleting the cache entry, leaving stale data for up to ten minutes. Third, the cache becomes a new dependency: if it is unavailable, the service must fall back to the database without timing out, which could briefly bring back the very load we are trying to remove. Finally, memory sizing is uncertain because we have not measured how many distinct products are viewed per hour during a sale.\n\nRollout: We will enable the cache for ten percent of traffic, compare error rates and database load for one week, and then expand gradually. A feature flag will allow us to turn the cache off within a minute.\n\nOpen questions: Should the time-to-live differ for products that change often? Who owns the cache cluster's on-call rotation?"
+        }
+      ]
+    }
+  ]
+}
